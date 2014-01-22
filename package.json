@@ -1,0 +1,38 @@
+{
+  "name": "making-fezzes",
+  "version": "0.0.1",
+  "description": "build tools for node-heads",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ceejbot/making-fezzes.git"
+  },
+  "keywords": [
+    "build-tools",
+    "fez",
+    "tup",
+    "make",
+    "talk",
+    "slides"
+  ],
+  "author": "C J Silverio <ceejceej@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ceejbot/making-fezzes/issues"
+  },
+  "homepage": "https://github.com/ceejbot/making-fezzes",
+  "dependencies": {
+    "reveal.js": "~2.6.0"
+  },
+  "devDependencies": {
+    "browserify": "~3.23.1",
+    "fez": "0.0.3",
+    "less": "~1.6.1"
+  }
+}
