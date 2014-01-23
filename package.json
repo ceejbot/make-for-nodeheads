@@ -33,7 +33,13 @@
   "devDependencies": {
     "browserify": "~3.23.1",
     "fez": "git://github.com/fez/fez",
-    "less": "~1.6.1",
-    "jade": "~1.1.5"
+    "fez-browserify": "git://github.com/isaacbw/fez-browserify",
+    "fez-concat": "~0.1.0",
+    "fez-jshint": "git://github.com/isaacbw/fez-jshint",
+    "fez-less": "git://github.com/isaacbw/fez-less",
+    "fez-uglify": "~0.1.0",
+    "jade": "~1.1.5",
+    "jshint": "~2.4.2",
+    "less": "~1.6.1"
   }
 }

@@ -5,37 +5,53 @@ NPM_BIN := node_modules/.bin/
 UGLIFY := $(addprefix $(NPM_BIN), uglifyjs)
 LESS := $(addprefix $(NPM_BIN), lessc)
 BROWSERIFY := $(addprefix $(NPM_BIN), browserify)
+JSHINT := $(addprefix $(NPM_BIN), jshint)
+
+# variables!
+INPUT_DIR = assets
+OUTPUT_DIR = out-make
 
 # CSS setup
-LESSOPTS := --include-path=bower_components/bootstrap/less
+LESSOPTS =
 LESSDIR := $(INPUT_DIR)/less
 CSSDIR := $(OUTPUT_DIR)/css
 
-LESSFILES := $(wildcard $(LESSDIR)/*.less)
-LESSDEPS := $(LESSFILES) $(wildcard $(LESSDIR)/**/*.less)
+LESSFILES := $(wildcard $(LESSDIR)/**/*.less)
 CSS := $(patsubst $(LESSDIR)%, $(CSSDIR)%, $(patsubst %.less,%.css,$(LESSFILES)))
 MINCSS = $(CSS:.css=.min.css)
 
+# javascript setup
+JSDIR = $(INPUT_DIR)/js
+JS_SRCS := $(wildcard $(JSDIR)/*.js)
+JS_TARGETS := $(patsubst $(JSDIR)%, $(OUTPUT_DIR)%, $(JS_SRCS))
 
 # now the build rules
 
-all:  css js
+all: dirs css js
+.PHONY : all dirs css js
+.SUFFIXES:
 
-css: $(CSS) $(MINCSS)
+dirs:
+	@mkdir -p $(OUTPUT_DIR)
 
-$(CSSDIR)/%.css : $(LESSDIR)/%.less $(LESSDEPS)
+css: dirs $(CSS) $(MINCSS)
+
+$(CSSDIR)/%.css : $(LESSDIR)/%.less
 	@echo Compiling $<
-	@$(LESS) $(LESSOPTS) $< > $@
+	@$(LESS) $< > $@
 
 $(CSSDIR)/%.min.css : $(LESSDIR)/%.less
 	@echo Minifying $<
 	@$(LESS) $(LESSOPTS) --yui-compress $< > $@
 
-js: $(JS_TARGETS)
-	@echo Just copying js files for now...
+lint: $(JS_SRCS)
+	@$(JSHINT) $(JS_SRCS)
+	@echo OK
 
-$(JSDIR)/%.js : $(JSSRCDIR)/%.js
-	@cp $< $@
+js: dirs $(JS_TARGETS)
+
+$(OUTPUT_DIR)/%.js : $(JSDIR)/%.js
+	@$(BROWSERIFY) $< -o $@
 
 %.min.js: %.js
 	@echo Minifying $<
