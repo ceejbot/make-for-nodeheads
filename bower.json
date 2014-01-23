@@ -1,0 +1,22 @@
+{
+  "name": "making-fezzes",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ceejbot/making-fezzes",
+  "authors": [
+    "C J Silverio <ceejceej@gmail.com>"
+  ],
+  "description": "build systems for node-heads",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "~2.6.1"
+  }
+}
