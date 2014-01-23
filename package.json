@@ -32,7 +32,8 @@
   },
   "devDependencies": {
     "browserify": "~3.23.1",
-    "fez": "0.0.3",
-    "less": "~1.6.1"
+    "fez": "git://github.com/fez/fez",
+    "less": "~1.6.1",
+    "jade": "~1.1.5"
   }
 }

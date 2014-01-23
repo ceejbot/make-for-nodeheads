@@ -20,6 +20,8 @@ What are the problems we use build tools to solve? How should we think about tho
 
 ### background
 
+### rules
+
 ### step through the example task
 
 
@@ -28,6 +30,8 @@ Transition: Make is no good for Windows users. If it were, we'd be done. So I'm 
 ## Fez
 
 ### background & motivation
+
+### rules
 
 ### step through the example task
 
